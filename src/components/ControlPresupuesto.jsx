@@ -1,6 +1,14 @@
 import React from 'react'
 
 const ControlPresupuesto = ({presupuesto}) => {
+
+    const formatearCantidad = (cantidad) => {
+        return cantidad.toLocaleString('en-US',{
+            style: 'currency',
+            currency: 'USD'
+        })
+    }
+
     return (
         <div className='contenedor-presupuesto contenedor sombra dos-columnas'>
             <div>
@@ -9,7 +17,15 @@ const ControlPresupuesto = ({presupuesto}) => {
 
             <div className='contenido-presupuesto'>
                 <p>
-                    <spam>Presupuesto</spam> ${presupuesto}
+                    <spam>Presupuesto</spam> {formatearCantidad(presupuesto)}
+                </p>
+
+                <p>
+                    <spam>Disponible</spam> {formatearCantidad(0)}
+                </p>
+
+                <p>
+                    <spam>Gastado</spam> {formatearCantidad(0)}
                 </p>
             </div>
         </div>
