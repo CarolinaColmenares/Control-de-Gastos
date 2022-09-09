@@ -34,8 +34,8 @@ function App() {
     setTimeout(() => {
       setAnimarModal(true)
     }, 500);
-
   }
+
 
   const guardarGasto = gasto => {
     console.log(gasto)
@@ -49,11 +49,16 @@ function App() {
       gasto.fecha = Date.now();
       setGastos([...gastos, gasto])
     }
-
     setAnimarModal(false)
     setTimeout(() => {
       setModal(false)
     }, 500);
+  }
+
+  const eliminarGasto = id => {
+    const gastosActualizados = gastos.filter(gasto => gasto.id !== id)
+
+    setGastos(gastosActualizados);
   }
 
 
@@ -73,6 +78,7 @@ function App() {
             <ListadoGastos
               gastos={gastos}
               setGastoEditar={setGastoEditar}
+              eliminarGasto={eliminarGasto}
             />
           </main>
           <div className='nuevo-gasto'>
